@@ -40,7 +40,7 @@ public class QuickStartTest4_2 {
 
         // 用户输入的账号密码
         UsernamePasswordToken usernamePasswordToken =
-                new UsernamePasswordToken("admin", "simon");
+                new UsernamePasswordToken("admin", "admin");
 
         subject.login(usernamePasswordToken);
 
