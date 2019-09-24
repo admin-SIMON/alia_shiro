@@ -72,7 +72,7 @@ public class CustomRealm extends AuthorizingRealm {
     // 进行权限校验时调用
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("认证 doGetAuthorizationInfo");
+        System.out.println("授权 doGetAuthorizationInfo");
         String name = principals.getPrimaryPrincipal().toString();
         Set<String> permissions = getPermissionsByNameFromDB(name);
         Set<String> roles = getRolesByNameFromDB(name);

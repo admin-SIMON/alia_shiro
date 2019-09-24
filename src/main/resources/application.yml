@@ -1,1 +1,11 @@
-
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://112.74.34.220:3306/aliatry_shiro?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: Simon!!2019
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线驼峰配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   # 打印SQL语句
