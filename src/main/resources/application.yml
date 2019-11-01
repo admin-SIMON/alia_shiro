@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://112.74.34.220:3306/aliatry_shiro?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/aliatry_shiro?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
     username: root
     password: Simon!!2019
     type: com.alibaba.druid.pool.DruidDataSource

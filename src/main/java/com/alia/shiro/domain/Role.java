@@ -1,6 +1,8 @@
 package com.alia.shiro.domain;
 
 
+import java.util.List;
+
 /**
  * 角色
  *
@@ -12,6 +14,15 @@ public class Role {
     private String name;
     private String description;
 
+    private List<Permission> permissionList;
+
+    public List<Permission> getPermissionList() {
+        return permissionList;
+    }
+
+    public void setPermissionList(List<Permission> permissionList) {
+        this.permissionList = permissionList;
+    }
 
     public int getId() {
         return id;

@@ -1,6 +1,7 @@
 package com.alia.shiro.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户
@@ -14,6 +15,16 @@ public class User {
     private String password;
     private Date createTime;
     private String salt;
+
+    private List<Role> roleList;
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     public int getId() {
         return id;
