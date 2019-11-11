@@ -22,9 +22,9 @@ public interface RoleMapper {
     @Results(
             value = {
                     @Result(id = true, property = "id", column = "id"),
-                    @Result(id = true, property = "name", column = "name"),
-                    @Result(id = true, property = "description", column = "des"),
-                    @Result(id = true, property = "permissionList", column = "id",
+                    @Result(property = "name", column = "name"),
+                    @Result(property = "description", column = "des"),
+                    @Result(property = "permissionList", column = "id",
                             many = @Many(select = "com.alia.shiro.dao.PermissionMapper.findPermissionListByRoleId",
                                     fetchType = FetchType.DEFAULT)
                     )
