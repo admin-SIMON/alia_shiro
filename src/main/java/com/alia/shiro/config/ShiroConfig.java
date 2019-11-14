@@ -13,6 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * Shiro配置
+ *
  * @author Simon
  */
 @Configuration
@@ -91,7 +93,7 @@ public class ShiroConfig {
 
     @Bean
     public SessionManager sessionManager() {
-        CostomSessionManager sessionManager = new CostomSessionManager();
+        CustomSessionManager sessionManager = new CustomSessionManager();
         return sessionManager;
     }
 }
