@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.alia.shiro.dao")
 public class AliaShiroApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AliaShiroApplication.class, args);
     }
