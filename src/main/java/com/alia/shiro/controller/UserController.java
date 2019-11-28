@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/admin/user")
 public class UserController {
     /**
-     * // @RequiresPermissions(value = {"user:add", "user:del"}, logical = Logical.AND)
-     *
      * @return
+     * @RequiresPermissions (value = { " user : add ", " user : del " }, logical = Logical.AND)
      */
     @RequiresRoles(value = {"admin", "editor"}, logical = Logical.OR)
     @RequestMapping("/list_user")
