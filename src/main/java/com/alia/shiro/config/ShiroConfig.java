@@ -1,7 +1,6 @@
 package com.alia.shiro.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -11,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static org.apache.commons.lang.time.DateUtils.MILLIS_PER_MINUTE;
 
 /**
  * Shiro配置
@@ -61,24 +62,38 @@ public class ShiroConfig {
     }
 
     @Bean
-    public DefaultSecurityManager securityManager() {
+    public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
-        securityManager.setRealm(customRealm());
+        // 如果不是前后端分离, 则不必设置下面的 sessionManager
         securityManager.setSessionManager(sessionManager());
+
+        // 设置 Realm (推荐放到最后, 不然某些情况可能不生效)
+        securityManager.setRealm(customRealm());
 
         return securityManager;
     }
 
+    /**
+     * 自定义 Realm
+     *
+     * @return
+     */
     @Bean
     public CustomRealm customRealm() {
         CustomRealm customRealm = new CustomRealm();
 
-        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        // 如果数据是明文, 双重MD5会验证错误
+//        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
 
         return customRealm;
     }
 
+    /**
+     * 密码加解密规则
+     *
+     * @return
+     */
     @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
@@ -91,9 +106,17 @@ public class ShiroConfig {
         return credentialsMatcher;
     }
 
+    /**
+     * 自定义 sessionManager
+     *
+     * @return
+     */
     @Bean
     public SessionManager sessionManager() {
-        CustomSessionManager sessionManager = new CustomSessionManager();
-        return sessionManager;
+        CustomSessionManager customSessionManager = new CustomSessionManager();
+
+        // 超时时间, 默认30分钟(续), 会话超时: 方法里面单位是毫秒(当前配置一分钟)
+        customSessionManager.setGlobalSessionTimeout(MILLIS_PER_MINUTE);
+        return customSessionManager;
     }
 }
