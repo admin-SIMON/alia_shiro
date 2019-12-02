@@ -17,7 +17,7 @@ public class VideoController {
      * @return
      */
     @RequestMapping("/update")
-    public JsonData videoUpdate() {
+    public JsonData updateVideo() {
         return JsonData.buildSuccess("video 更新成功");
     }
 }
