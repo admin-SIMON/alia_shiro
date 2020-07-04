@@ -83,8 +83,9 @@ public class ShiroConfig {
     public CustomRealm customRealm() {
         CustomRealm customRealm = new CustomRealm();
 
-        // 如果数据是明文, 双重MD5会验证错误
-//        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        // TODO 如果数据是明文, 双重MD5会验证错误
+
+        // customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
 
         return customRealm;
     }

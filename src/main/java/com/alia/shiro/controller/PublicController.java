@@ -43,7 +43,7 @@ public class PublicController {
             return JsonData.buildSuccess(info);
         } catch (Exception e) {
             e.printStackTrace();
-            // todo 处理安全, 防止暴力破解
+            // TODO 处理安全, 防止暴力破解
 
 
             return JsonData.buildError("账号或者密码错误");
